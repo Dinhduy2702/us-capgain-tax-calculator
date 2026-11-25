@@ -715,8 +715,15 @@
   function loadFromUrl() {
     const params = new URLSearchParams(window.location.search);
     if ([...params.keys()].length === 0) return;
+    const stateShortcut = (params.get("state") || "").toUpperCase();
+    if (stateShortcut && (TAX.states || []).some((s) => s.code === stateShortcut)) {
+      ["stState", "reState", "wtState"].forEach((id) => {
+        const el = $(id);
+        if (el) el.value = stateShortcut;
+      });
+    }
     params.forEach((val, key) => {
-      if (key === "tool") return;
+      if (key === "tool" || key === "state") return;
       const el = $(key);
       if (el) el.value = val;
     });
