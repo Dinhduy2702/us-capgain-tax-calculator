@@ -1273,3 +1273,36 @@ button:disabled {
   margin: 0.5rem 0 0;
   font-size: 0.9rem;
 }
+
+/* Right-Aligned Snapshot Table (10/10 Standard) */
+.snapshot-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+.snapshot-table th,
+.snapshot-table td {
+  padding: 0.75rem 1.05rem;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+}
+.snapshot-table th {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--text-muted);
+  background: var(--bg);
+}
+.snapshot-table th.num,
+.snapshot-table td.num {
+  text-align: right;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+  padding-left: 1.5rem;
+}
+.snapshot-table tr.is-total td {
+  font-weight: 700;
+  color: var(--text-primary);
+  border-top: 2px solid var(--border);
+  background: rgba(15, 118, 110, 0.05);
+}
