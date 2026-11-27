@@ -14,13 +14,13 @@
   // 2026 Federal Long-Term Capital Gains Brackets (by Taxable Income)
   const LTCG_BRACKETS = {
     single: [
-      { upTo: 48350, rate: 0.00 },
-      { upTo: 533400, rate: 0.15 },
+      { upTo: 49450, rate: 0.00 },
+      { upTo: 545500, rate: 0.15 },
       { upTo: Infinity, rate: 0.20 }
     ],
     married: [
-      { upTo: 96700, rate: 0.00 },
-      { upTo: 600050, rate: 0.15 },
+      { upTo: 98900, rate: 0.00 },
+      { upTo: 613700, rate: 0.15 },
       { upTo: Infinity, rate: 0.20 }
     ],
     hoh: [
@@ -251,7 +251,7 @@
   }
 
   function evaluateTradeTax(gain, otherGrossIncome, filing, stateCode, isLongTerm) {
-    const stdDed = (TAX.standardDeduction && TAX.standardDeduction[filing]) || 15000;
+    const stdDed = (TAX.standardDeduction && TAX.standardDeduction[filing]) || 16100;
     const ordTaxable = Math.max(0, otherGrossIncome - stdDed);
     const g = Math.max(0, gain);
 
@@ -306,7 +306,7 @@
       const netLoss = Math.abs(netAfterLoss);
       ordDedApplied = Math.min(3000, netLoss);
       lossCarryforward = Math.max(0, netLoss - 3000);
-      const stdDed = (TAX.standardDeduction && TAX.standardDeduction[filing]) || 15000;
+      const stdDed = (TAX.standardDeduction && TAX.standardDeduction[filing]) || 16100;
       const ordTaxable = Math.max(0, income - stdDed);
       const margRate = getMarginalOrdinaryRate(ordTaxable, filing);
       tlhSavings += ordDedApplied * margRate;
@@ -417,7 +417,7 @@
     const taxableLTCG = Math.max(0, nonRecaptureGain - excluded121);
     const totalTaxableGain = recaptureGain + taxableLTCG;
 
-    const stdDed = (TAX.standardDeduction && TAX.standardDeduction[filing]) || 15000;
+    const stdDed = (TAX.standardDeduction && TAX.standardDeduction[filing]) || 16100;
     const ordTaxable = Math.max(0, income - stdDed);
 
     // Unrecaptured Section 1250 Depreciation Recapture taxed at marginal ordinary rate capped at 25%
